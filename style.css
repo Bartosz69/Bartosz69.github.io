@@ -1,0 +1,62 @@
+body {
+	font-family: sans-serif;
+
+	background-color: rgba(224, 232, 255, 1);
+	background-image: linear-gradient(90deg, rgba(224, 232, 255, 1) 0%, rgba(168, 192, 255, 1) 100%);
+
+	margin: 0;
+	padding: 0;
+}
+section {
+	margin: auto;
+	margin-top: 1vh;
+	padding: 1vw;
+	max-width: 960px;
+}
+nav {
+	padding: 1vw;
+	margin: auto;
+	max-width: 960px;
+}
+nav button {
+	padding: 10px;
+	border: 1px solid #555;
+	cursor: pointer;
+	background-color: rgb(81, 117, 172);
+	color: #FFF;
+}
+nav button.active {
+	background-color: rgb(58, 92, 143);
+}
+section a {
+	color: rgb(58, 92, 143);
+	font-weight: bold;
+}
+section code {
+	padding: 2vw;
+	display: block;
+	overflow-y: auto;
+	background-color: rgba(0, 0, 0, 0.15);
+	border-left: 2px solid rgba(255,255,255,0.4);
+	border-top: 2px solid rgba(255,255,255,0.4);
+	border-bottom: 2px solid rgba(255,255,255,0.2);
+	border-right: 2px solid rgba(255,255,255,0.2);
+	margin-top: 1vw;
+	margin-bottom: 1vw;
+}
+section code .comment {
+	color: rgb(0, 117, 0);
+	font-style: italic;
+}
+
+main h1 {
+	margin: 0;
+	margin-bottom: 1vw;
+	padding: 1vw;
+	background: rgb(167,207,223);
+	background: -moz-linear-gradient(top,  rgba(167,207,223,1) 0%, rgba(35,83,138,1) 100%);
+	background: -webkit-linear-gradient(top,  rgba(167,207,223,1) 0%,rgba(35,83,138,1) 100%);
+	background: linear-gradient(to bottom,  rgba(167,207,223,1) 0%,rgba(35,83,138,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a',GradientType=0 );
+	color: #FFF;
+}

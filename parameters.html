@@ -1,0 +1,52 @@
+W celu stworzenia animacji, używamy funkcji anime, która przyjmuje obiekt jako argument. W tym obiekcie opisujemy wszystkie szczegóły animacji.
+
+<CODE>
+	let animation = anime({<BR /><BR />
+
+	});
+</CODE>
+
+Jest kilka rodzajów właściwości (properties) używanych do opisu animacji. Są pogrupowane na cztery kategorie:
+<UL>
+	<LI><B>Targets</B> - czyli elementy (cele), które chcemy animować np. div. Może to być selektor CSS (div, .some_class, #someId), węzeł DOM lub lista węzłów albo zwykły obiekt JavaScript. Istnieje również możliwość użycia kombinacji powyższych w tablicy.</LI>
+	<LI><B>Properties (właściwości)</B> - obejmuje to wszystkie właściwości i atrybuty, które mogą być animowane podczas obsługi obiektów CSS, JavaScript, DOM i SVG.</LI>
+	<LI><B>Property Parameters</B> (Parametry właściwości - obejmują parametry związane z właściwościami, takie jak czas trwania, opóźnienie, wygładzanie itp.</LI>
+	<LI><B>Animation Parameters</B> (Parametry animacji) - obejmuje to parametry związane z animacją, takie jak kierunek, zapętlenie itp.</LI>
+</UL>
+
+Napiszmy teraz kod pierwszego przykładu. W pliku html wstaw prostego diva.
+
+<CODE>
+	&lt;div style=&quot;width: 100px; height: 100px; background: blue;&quot;&gt;&lt;/div&gt;
+</CODE>
+
+Kod animacji wygląda następująco.
+
+<CODE>
+let animation = anime({<BR />
+&nbsp;&nbsp;targets: 'div',<BR />
+<SPAN CLASS="comment">&nbsp;&nbsp;// Properties</SPAN> <BR />
+&nbsp;&nbsp;translateX: 200,<BR />
+&nbsp;&nbsp;borderRadius: 50,<BR />
+<SPAN CLASS="comment">&nbsp;&nbsp;// Property Parameters</SPAN><BR />
+&nbsp;&nbsp;duration: 2000,<BR />
+&nbsp;&nbsp;easing: 'linear',<BR />
+<SPAN CLASS="comment">&nbsp;&nbsp;// Animation Parameters</SPAN><BR />
+&nbsp;&nbsp;direction: 'alternate',<BR />
+&nbsp;&nbsp;loop: true<BR />
+});
+</CODE>
+
+Omówię teraz krótko co się dzieje w animacji. Łapiemy kwadrat (div). Przesuwamy go o 200 pikseli w lewo, przekształcając go w okrąg. Ustawiliśmy to wszystko tak, aby przebiegało płynnie w ciągu dwóch sekund (liniowo oznacza, że animacja nie zostanie poddana wygładzaniu). Ustawiając właściwość <B>direction</B> na naprzemiennie (alternate), poinstruujemy element div, aby po zakończeniu animacji powrócił do swojej początkowej pozycji i kształtu. Anime.js robi to, odtwarzając animację w odwrotnej kolejności. <B>loop</B> oznacza zapętlenie naszej animacji. Bibliotekę najlepiej poznaje się na przykładach więc zróbmy kolejny. Będziemy znów animować naszego diva, tylko tym razem troszkę inaczej. Funkcja CSS <B>translateX</B> ustawi wartość 260, aby przesunąć o 260 wzdłuż osi x). Użyjemy również funkcji CSS <B>rotate</B>, aby obrócić o 720 stopni. Kolor tła diva zmienimy za pomocą backgroundColor. Reszta właściwości jest taka sama jak w przykładzie wyżej.
+
+<CODE>
+let animation = anime({<BR />
+&nbsp;&nbsp;targets: 'div',<BR />
+&nbsp;&nbsp;translateX: 260,<BR />
+&nbsp;&nbsp;rotate: 720,<BR />
+&nbsp;&nbsp;backgroundColor: '#f75',<BR />
+&nbsp;&nbsp;direction: 'alternate',<BR />
+&nbsp;&nbsp;duration: 2000,<BR />
+&nbsp;&nbsp;loop: true<BR />
+});
+</CODE>
