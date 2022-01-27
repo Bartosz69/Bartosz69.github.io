@@ -1,0 +1,54 @@
+Dowolna właściwość obiektu (Object) zawierająca wartość liczbową może być animowana. Tutaj właśnie zmieniliśmy wartość właściwości obiektu i zaktualizowaliśmy dom, easing: linear jest używany do animacji liniowej. Możesz zmienić wartość <B>round</B>, aby zobaczyć, do czego jest używana.
+
+<CODE>
+
+var div = document.querySelector("div");<BR /><BR />
+
+var object = {<BR />
+&nbsp;&nbsp;prop1: 10,<BR />
+&nbsp;&nbsp;prop2: "0%",<BR />
+};<BR /><BR />
+
+let animation = anime({<BR />
+&nbsp;&nbsp;targets: object,<BR />
+&nbsp;&nbsp;prop1: 70,<BR />
+&nbsp;&nbsp;prop2: "96%",<BR />
+&nbsp;&nbsp;easing: "linear",<BR />
+&nbsp;&nbsp;round: 1,<BR />
+&nbsp;&nbsp;update: function () {<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;div.innerHTML = JSON.stringify(object);<BR />
+&nbsp;&nbsp;},<BR />
+}); 
+
+</CODE>
+
+Do tej pory zajmowaliśmy się animacjami jednoetapowymi, które przenoszą obiekt z punktu A do punktu B. A co z przenoszeniem go z punktu A do B, C do D? W następnym przykładzie dowiemy się, jak używać klatek kluczowych. Służą one do tworzenia wieloetapowych animacji. Przesuniemy prosty kwadrat w różnych kierunkach.
+
+<CODE>
+let animation = anime({<BR />
+&nbsp;&nbsp;targets: 'div',<BR />
+&nbsp;&nbsp;translateY: [<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;{value: 50, duration: 500},<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;{value: 0, duration: 500, delay: 1500},<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;{value: -53, duration: 500, delay: 500},<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;{value: 0, duration: 500, delay: 2500},<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;{value: 50, duration: 500, delay: 500},<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;{value: 0, duration: 500, delay: 1500}<BR />
+&nbsp;&nbsp;],<BR />
+&nbsp;&nbsp;translateX: [<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;{value: 53, duration: 500, delay: 1000},<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;{value: 0, duration: 500, delay: 2500},<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;{value: -53, duration: 500, delay: 500},<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;{value: 0, duration: 500, delay: 2500}<BR />
+&nbsp;&nbsp;],<BR />
+&nbsp;&nbsp;easing: 'linear',<BR />
+&nbsp;&nbsp;begin: function() {<BR />
+<SPAN CLASS="comment">&nbsp;&nbsp;&nbsp;&nbsp;// some when animation begin</SPAN><BR />
+&nbsp;&nbsp;},<BR />
+&nbsp;&nbsp;complete: function() {<BR />
+<SPAN CLASS="comment">&nbsp;&nbsp;&nbsp;&nbsp;// when animation complete</SPAN><BR />
+&nbsp;&nbsp;}<BR />
+});
+</CODE>
+
+Dla każdej właściwości, którą chcemy animować, używamy tablicy obiektów, w których każdy obiekt opisuje określoną klatkę kluczową. W naszym przypadku chcemy przesunąć kwadrat w pionie i poziomie. Dlatego używamy właściwości translateY i translateX oraz zapewniamy tablicę keyframes dla każdej z nich. Sztuczka tworzenia odpowiedniego ruchu polega na prawidłowym obliczeniu czasu trwania i parametrów opóźnienia (delay) - co nie jest łatwym zadaniem. Klatki są wykonywane od góry do dołu i rozpoczynają się jednocześnie dla każdej właściwości, która ma określoną tablicę klatek kluczowych.
