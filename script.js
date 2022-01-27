@@ -3,7 +3,7 @@ $('nav button').click(function () {
 	$('nav button').removeClass("active");
 	$(this).addClass("active");
 	$.ajax({
-		url: SubPage + ".html",
+		url: "content/" + SubPage + ".html",
 		dataType: "html",
 		cache: false,
 		success: function (REPLY) {
@@ -16,4 +16,5 @@ $('nav button').click(function () {
 });
 
 $('nav button[data-page="homepage"]').addClass("active");
-$('section').load("homepage.html");
+$('section').load("content/homepage.html");
+
